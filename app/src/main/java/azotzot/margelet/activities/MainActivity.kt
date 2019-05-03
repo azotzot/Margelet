@@ -12,7 +12,7 @@ import java.net.URISyntaxException
 
 class MainActivity : AppCompatActivity() {
 
-//    private var socket = globVar.socket
+    //    private var socket = globVar.socket
     private val connectUrl = "http://10.0.2.2:3000"
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,10 +28,6 @@ class MainActivity : AppCompatActivity() {
 //        }
     }
 
-    fun testDate(view: View) {
-        socket!!.emit("test", "test mess")
-        Log.i("check", "try to send")
-    }
 
     fun testConnect(view: View) {
 //        socket!!.connect()
@@ -46,6 +42,16 @@ class MainActivity : AppCompatActivity() {
             Log.i("check", socket.toString())
             Log.i("check", socket.toString()+" || globVar")
         }
+    }
+
+    fun testDate(view: View) {
+
+        socket!!.emit("test", "test mess")
+//        var args: Array<String>
+        socket?.on("test1") { args ->
+            Log.i("CHECK", args[0].toString())
+        }
+
     }
 
     fun testDisconnect(view: View) {
