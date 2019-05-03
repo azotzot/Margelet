@@ -20,7 +20,7 @@
             app:layout_constraintBottom_toTopOf="@+id/loadButton"/>
 
     <Button
-            android:text="Сказать ты пидор"
+            android:text="send message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/loadButton"
