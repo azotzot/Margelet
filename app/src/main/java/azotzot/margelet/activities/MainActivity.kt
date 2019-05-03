@@ -19,33 +19,24 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
-//        try{
-//            socket = IO.socket(connectUrl)
-//            Log.i("check", "connect success")
-//        } catch (e: URISyntaxException) {
-//            Log.e("check", "connect error")
-//        }
-    }
-
-
-    fun testConnect(view: View) {
-//        socket!!.connect()
         try{
             socket = IO.socket(connectUrl)
             Log.i("check", "connect success")
         } catch (e: URISyntaxException) {
             Log.e("check", "connect error")
         }
-        if (socket != null) {
+    }
+
+
+    fun testConnect(view: View) {
+        socket!!.connect()
+        if (socket!!.connected()) {
             Log.i("check", "connect success")
             Log.i("check", socket.toString())
-            Log.i("check", socket.toString()+" || globVar")
         }
     }
 
     fun testDate(view: View) {
-
         socket!!.emit("test", "test mess")
 //        var args: Array<String>
         socket?.on("test1") { args ->
