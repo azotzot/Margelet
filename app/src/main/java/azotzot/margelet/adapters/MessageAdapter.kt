@@ -21,15 +21,13 @@ class MessageAdapter(var messages: MutableList<Message>, var context: Context): 
 
     override fun onBindViewHolder(holder: MessageViewHolder, position: Int) {
 
-//        holder.bind(chats[position])
         Log.d("check", messages[position].toString())
         holder.senderId.text = messages[position].senderId.toString()
         holder.messageText.text = messages[position].message
     }
 
     class MessageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) { //, View.OnClickListener
-        //        private var view = itemView
-        //        private var chat: Chat? = null
+
         var senderId: TextView = itemView.senderId
         var messageText: TextView = itemView.messageText
 
@@ -37,16 +35,8 @@ class MessageAdapter(var messages: MutableList<Message>, var context: Context): 
             senderId = itemView.senderId
             messageText = itemView.messageText
 
-//            itemView.setOnClickListener(this)
         }
-//
-//        override fun onClick(v: View?) {
-//            Log.d("check", "click_on_item")
-//        }
 
-//        fun bind(chat: Chat) {
-//            chatname.text = chat.chatName
-//        }
     }
 
 }

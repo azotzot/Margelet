@@ -25,21 +25,11 @@ class ChatListAdapter(var chats: MutableList<Chat>, context: Context): RecyclerV
 
     override fun onBindViewHolder(holder: ChatsViewHolder, position: Int) {
         holder.chatname.text = chats[position].chatName
-//        holder.itemView.setOnClickListener {
-//            fun onClick(v: View) {
-//                Log.d("check", "click_on_item")
-//                var intent = Intent(v.context, ChatActivity::class.java)
-//                intent.putExtra("chat_position", position)
-//                v.context.startActivity(intent)
-//
-//        } }
 
     }
 
     class ChatsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener{ //, View.OnClickListener
 
-        //        private var view = itemView
-        //        private var chat: Chat? = null
         var chatname: TextView = itemView.chatname
         init {
             itemView.setOnClickListener(this)
@@ -52,17 +42,10 @@ class ChatListAdapter(var chats: MutableList<Chat>, context: Context): RecyclerV
             intent.putExtra("chat_position", pos.toString())
             v?.context?.startActivity(intent)
 
-
         }
 
-
-//        fun bind(chat: Chat) {
-//            chatname.text = chat.chatName
-//        }
     }
 
-//    interface OnChatListener{
-//        fun onChatClick(view: View, position: Int)
-//    }
+
 
 }
