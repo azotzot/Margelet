@@ -7,7 +7,7 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import azotzot.margelet.GlobalVariables.Companion.user
 import azotzot.margelet.R
-import azotzot.margelet.adapters.ChatsAdapter
+import azotzot.margelet.adapters.ChatListAdapter
 import kotlinx.android.synthetic.main.activity_chat_list.*
 
 
@@ -15,7 +15,7 @@ class ChatListActivity : AppCompatActivity() {
 
 //    private var chatListView: RecyclerView? = chatList
 //    private lateinit var linearLayoutManager: LinearLayoutManager
-//    private lateinit var adapter: ChatsAdapter
+//    private lateinit var adapter: ChatListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,9 +30,24 @@ class ChatListActivity : AppCompatActivity() {
 //        loadData()
 
 //        Log.i("load_check", user.toString())
-        chatList?.adapter = ChatsAdapter(user!!.chats, this)
+        chatList?.adapter = ChatListAdapter(user!!.chats, this)
+
 
     }
+//
+//    override fun onChatClick(view: View, position: Int) {
+//
+//        Log.d("check", "click_on_item")
+//
+//        var intent = Intent(this, ChatActivity::class.java)
+//        intent.putExtra("chat_position", position)
+//        startActivity(intent)
+//
+//    }
+//
+//    interface OnChatListener{
+//        fun onChatClick(view: View, position: Int)
+//    }
 
 //    private fun loadData(){
 //        socket!!.emit("getData").on("sendData") { args ->
