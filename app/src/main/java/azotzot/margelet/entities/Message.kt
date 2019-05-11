@@ -1,5 +1,11 @@
-package ru.donstu.margelet.entity
+package azotzot.margelet.entities
 
-class Message(val senderId: Int, val recpientId: Int, var message: String) {
+class Message(var messid: Int,var senderId: Int, var message: String) {
+
+    override fun toString(): String {
+        return "{messid: $messid \n" +
+                "\t\t\t\t senderId: $senderId \n" +
+                "\t\t\t\t message: $message}"
+    }
 
 }

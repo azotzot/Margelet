@@ -1,11 +1,10 @@
-package ru.donstu.margelet.entity
+package azotzot.margelet.entities
 
-class User(var nickname: String, var userId: Int, var chats: ArrayList<Chat>) {
+class User(var userId: Int, var nickname: String, var chats: MutableList<Chat>) {
 
-//    lateinit var nickname: String
-//    var userId = -1
-//    lateinit var chats: ArrayList<Chat>
-
-
-
+    override fun toString(): String {
+        return "{userId: $userId \n" +
+                "nickname: $nickname \n" +
+                "first chat: ${chats[0]}}"
+    }
 }
