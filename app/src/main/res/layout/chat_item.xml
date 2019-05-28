@@ -5,9 +5,7 @@
 		xmlns:tools="http://schemas.android.com/tools"
 
 		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:paddingStart="5dp"
-		android:paddingVertical="15dp"
+		android:layout_height="60dp"
 		>
 
 
@@ -19,7 +17,32 @@
 			app:layout_constraintTop_toTopOf="parent"
 			app:layout_constraintBottom_toBottomOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
-			android:layout_marginStart="8dp"/>
+			android:layout_marginStart="16dp"
+			android:hint="chatName"
+			android:textSize="18sp"
+			app:layout_constraintVertical_bias="0.457"/>
+
+	<TextView
+			android:layout_width="167dp"
+			android:layout_height="20dp"
+			android:id="@+id/lastMessage"
+			android:hint="lastMessage"
+			app:layout_constraintTop_toTopOf="parent"
+			app:layout_constraintBottom_toBottomOf="parent"
+			android:layout_marginEnd="16dp"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintVertical_bias="0.85"
+			android:singleLine="true"
+			android:width="100dp"
+			android:lines="1"/>
+
+	<View
+			android:layout_width="match_parent"
+			android:layout_height="2dp"
+			android:background="@android:color/darker_gray"
+			tools:layout_editor_absoluteX="0dp"
+			app:layout_constraintBottom_toBottomOf="parent"
+			/>
 
 
 	<!--<TextView-->

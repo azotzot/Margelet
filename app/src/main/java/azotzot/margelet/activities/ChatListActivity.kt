@@ -5,10 +5,13 @@ package azotzot.margelet.activities
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
+import android.view.View
+import android.widget.Toast
+import azotzot.margelet.GlobalVariables
 import azotzot.margelet.GlobalVariables.Companion.user
 import azotzot.margelet.R
 import azotzot.margelet.adapters.ChatListAdapter
-import kotlinx.android.synthetic.main.activity_chat_list.*
+import kotlinx.android.synthetic.main.chats_activity.*
 
 
 class ChatListActivity : AppCompatActivity() {
@@ -19,7 +22,7 @@ class ChatListActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_chat_list)
+        setContentView(R.layout.chats_activity)
 
         chatList?.layoutManager = LinearLayoutManager(this)
 
@@ -33,6 +36,11 @@ class ChatListActivity : AppCompatActivity() {
         chatList?.adapter = ChatListAdapter(user!!.chats, this)
 
 
+    }
+
+    fun testService(view: View) {
+        Toast.makeText(this, "(づ｡◕‿‿◕｡)づ", Toast.LENGTH_SHORT).show()
+        GlobalVariables.socket!!.emit("testService")
     }
 //
 //    override fun onChatClick(view: View, position: Int) {

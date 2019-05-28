@@ -25,12 +25,14 @@ class ChatListAdapter(var chats: MutableList<Chat>, context: Context): RecyclerV
 
     override fun onBindViewHolder(holder: ChatsViewHolder, position: Int) {
         holder.chatname.text = chats[position].chatName
+        holder.lastmessage.text = chats[0].messages[chats[0].messages.size-1].messageText
 
     }
 
     class ChatsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener{ //, View.OnClickListener
 
         var chatname: TextView = itemView.chatname
+        var lastmessage: TextView = itemView.lastMessage
         init {
             itemView.setOnClickListener(this)
         }
