@@ -23,12 +23,12 @@
 			android:layout_marginEnd="8dp"
 			app:layout_constraintEnd_toEndOf="parent"
 			android:layout_marginTop="8dp"
-			app:layout_constraintTop_toTopOf="parent"
-			android:layout_marginBottom="8dp"
+			android:layout_marginBottom="345dp"
 			app:layout_constraintBottom_toBottomOf="parent"
 			app:layout_constraintHorizontal_bias="0.503"
 			app:layout_constraintVertical_bias="0.416"
-			/>
+			app:layout_constraintTop_toBottomOf="@+id/avatar_preview"
+			android:autofillHints="username"/>
 
 	<Button
 			android:text="Login"
@@ -52,8 +52,21 @@
 			app:layout_constraintTop_toBottomOf="@+id/enterNickname"
 			android:hint="password"
 			app:layout_constraintStart_toStartOf="@+id/enterNickname"
-			app:layout_constraintEnd_toEndOf="@+id/enterNickname"/>
+			app:layout_constraintEnd_toEndOf="@+id/enterNickname"
+			android:autofillHints="password"/>
 
+	<ImageView
+			android:layout_width="95dp"
+			android:layout_height="95dp"
+			android:id="@+id/avatar_preview"
+			android:layout_marginTop="144dp"
+			android:layout_marginBottom="10dp"
+			app:layout_constraintEnd_toEndOf="@+id/enterNickname"
+			app:layout_constraintBottom_toTopOf="@+id/enterNickname"
+			app:layout_constraintTop_toTopOf="parent"
+			app:layout_constraintStart_toStartOf="@+id/enterNickname"
+			app:srcCompat="@drawable/avatar_login"
+			android:contentDescription="justAnotherLogo"/>
 
 
 </android.support.constraint.ConstraintLayout>

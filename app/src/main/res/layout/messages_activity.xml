@@ -5,40 +5,39 @@
 		xmlns:app="http://schemas.android.com/apk/res-auto"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
-		tools:context=".activities.ChatActivity">
-	<FrameLayout
-			android:layout_width="match_parent"
-			android:layout_height="match_parent">
+		tools:context=".activities.MessagesActivity">
+
+	<LinearLayout
+			android:orientation="vertical"
+			android:layout_width="0dp"
+			android:layout_height="0dp"
+			android:id="@+id/linearLayout2"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintTop_toTopOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintBottom_toBottomOf="parent">
 
 		<android.support.v7.widget.RecyclerView
 				android:id="@+id/messageList"
 				android:layout_width="match_parent"
-				android:layout_height="fill_parent"
 				android:scrollbars="vertical"
-				app:layout_constraintEnd_toEndOf="parent"
-				app:layout_constraintStart_toStartOf="parent"
-				app:layout_constraintHorizontal_bias="1.0"
-				app:layout_constraintTop_toTopOf="parent"
-				app:layout_constraintBottom_toBottomOf="parent"
-				android:onClick="sendMessage"
-				>
+				android:layout_height="0dp"
+				android:layout_weight="1">
 
 		</android.support.v7.widget.RecyclerView>
 
 		<LinearLayout
 				android:orientation="horizontal"
-				android:layout_width="359dp"
-				android:layout_height="63dp"
+				android:layout_width="match_parent"
+				android:layout_height="50dp"
 				android:id="@+id/linearLayout"
-				app:layout_constraintStart_toStartOf="parent"
-				app:layout_constraintBottom_toBottomOf="@+id/messageList"
-				app:layout_constraintEnd_toEndOf="parent"
 				android:background="#3F51B5"
-				android:layout_gravity="bottom">
+				android:layout_gravity="bottom"
+				>
 
 			<EditText
 					android:id="@+id/newMessageField"
-					android:layout_width="302dp"
+					android:layout_width="300dp"
 					android:layout_height="match_parent"
 					android:inputType="textAutoCorrect|textMultiLine|textCapSentences"
 					android:gravity="start|top"
@@ -48,27 +47,24 @@
 					android:hint="Input message here"
 					android:background="@color/heMessColorBackground"
 					android:textColor="@android:color/white"
-					android:textColorHint="#5CFFFFFF"/>
+					android:textColorHint="#5CFFFFFF"
+					android:paddingLeft="2dp"/>
 
 
 			<ImageButton
 					android:id="@+id/sendMessageButton"
 					android:text="send"
 					android:textSize="10sp"
-					android:layout_width="fill_parent"
+					android:layout_width="match_parent"
 					android:layout_height="match_parent"
 					android:src="@android:drawable/ic_menu_send"
 					android:background="#9C27B0"
-					android:onClick="sendMessage"/>
+					android:onClick="sendMessage"
+					android:contentDescription="send message"/>
 
 		</LinearLayout>
 
-
-	</FrameLayout>
-
-
-
-
+	</LinearLayout>
 
 
 </android.support.constraint.ConstraintLayout>

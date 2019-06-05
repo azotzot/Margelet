@@ -6,7 +6,8 @@ import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.View
 import android.widget.Toast
-import azotzot.margelet.GlobalVariables
+import azotzot.margelet.CompositeJob
+import azotzot.margelet.GlobalVariables.Companion.socket
 import azotzot.margelet.GlobalVariables.Companion.user
 import azotzot.margelet.R
 import azotzot.margelet.adapters.MessageAdapter
@@ -15,11 +16,12 @@ import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.messages_activity.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
+import java.util.*
 import kotlin.coroutines.CoroutineContext
 
-class ChatActivity : AppCompatActivity(), CoroutineScope {
+class MessagesActivity : AppCompatActivity(), CoroutineScope {
+    private val job: CompositeJob = CompositeJob()
     override val coroutineContext: CoroutineContext
         get() = Dispatchers.Main //To change initializer of created properties use File | Settings | File Templates.
 
@@ -27,12 +29,16 @@ class ChatActivity : AppCompatActivity(), CoroutineScope {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.messages_activity)
 
-        messageList?.layoutManager = LinearLayoutManager(this)
+        messageList?.layoutManager = LinearLayoutManager(this).apply {
+            this.reverseLayout = true
+        }
 
         var pos = intent.getStringExtra("chat_position").toInt()
         messageList?.adapter = MessageAdapter(user!!.chats[pos].messages, this)
+//        val forJoke = Toast.makeText(this, "ПРИХОД СОВЕРШЕН", Toast.LENGTH_SHORT)//"(づ｡◕‿‿◕｡)づ WAIT", Toast.LENGTH_LONG)
 
     }
+
 
 
     fun sendMessage(view: View) {
@@ -42,26 +48,34 @@ class ChatActivity : AppCompatActivity(), CoroutineScope {
         if (messTextEditor.text.toString() != "") {
 
             Toast.makeText(this, "(づ｡◕‿‿◕｡)づ", Toast.LENGTH_SHORT).show()
-
+            val chatOfNewMess = user!!.chats[pos]
             var newMess = Message(
-                meChatId = user!!.chats[pos].chatId,
+                chatId = chatOfNewMess.chatId,
                 senderId = user!!.userId,
-                recipientId = user!!.chats[pos].recipientId,
+                date = Date(),
+                messId = UUID.randomUUID(),
                 messageText = messTextEditor.text.toString()
             )
+            chatOfNewMess.messages.add(newMess)
             messTextEditor.text.clear()
             Log.d("check", newMess.toString())
-            launch(coroutineContext) {
-                GlobalVariables.socket?.emit("newMessage", GsonBuilder().serializeNulls().create().toJson(newMess))
-                Log.d("check", newMess.toString())
-                Log.d("check", "launch active")
-                cancel(cause = null)
-                Log.d("check", "still active???")
-            }
+
+            job.add(launch {
+                val t = mutableListOf<Int>()
+                chatOfNewMess.members.forEach { t.add(it.userId)}
+                socket?.emit("sendMessage", t, GsonBuilder().serializeNulls().setDateFormat("yyyy-MM-dd HH:mm:ss").create().toJson(newMess) )
+                Log.d("check",  newMess.toString())
+            })
 
         }
 
 
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+
+        job.cancel()
     }
 
 

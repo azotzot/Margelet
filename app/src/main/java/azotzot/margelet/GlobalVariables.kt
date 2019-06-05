@@ -16,7 +16,7 @@ class GlobalVariables: Application() {
         var user: User? = null
     }
 
-    private val connectUrl = "http://10.0.2.2:3000"
+    private val connectUrl = "http://10.0.2.2:3000" //"https://margeletserver.herokuapp.com/"
 
     override fun onCreate() {
         super.onCreate()
@@ -29,6 +29,12 @@ class GlobalVariables: Application() {
         }
 
         startService(Intent(this, DataSyncService::class.java))
+    }
+
+    override fun onTerminate() {
+        super.onTerminate()
+
+        socket!!.disconnect()
     }
 
 

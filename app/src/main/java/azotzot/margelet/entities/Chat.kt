@@ -1,19 +1,22 @@
 package azotzot.margelet.entities
 
-class Chat(var chatId: Int,
+import java.util.*
+
+data class Member(var userId: Int,
+                  var nickname: String) {
+}
+
+class Chat(var chatId: UUID,
            var chatName: String,
-           var chUserId: Int,
-           var recipientId: Int,
-           var recipientName: String,
+           var type: String,
+           var members: MutableList<Member>,
            var messages: MutableList<Message>) {
 
     override fun toString(): String {
         return "{chatId: $chatId \n" +
-                "\t userId: $chUserId \n" +
+                "\t type: $type \n "+
                 "\t\t chatName: $chatName \n" +
-                "\t\t\t recipientId: $recipientId \n" +
-                "\t\t\t\t recipientName: $recipientName \n" +
-                "\t\t\t\t\t first message: ${messages[0]} \n}"
+                "\t\t\t first message: ${messages[0]} \n}"
     }
 
 }

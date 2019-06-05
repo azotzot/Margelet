@@ -1,9 +1,14 @@
 package azotzot.margelet.entities
 
-class User(var userId: Int, var nickname: String, var chats: MutableList<Chat>) {
+import java.util.*
+
+class User(var userId: Int,
+           var nickname: String,
+    //var password: String,
+           var chats: MutableList<Chat>) {
 
 
-    fun getChatById(chatId: Int): Chat?{
+    fun getChatById(chatId: UUID): Chat?{
         for(ch in chats){
             if (ch.chatId == chatId) {
                 return ch

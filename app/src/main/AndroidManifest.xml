@@ -13,14 +13,16 @@
 			android:roundIcon="@mipmap/ic_launcher_round"
 			android:supportsRtl="true"
 			android:theme="@style/AppTheme"
+			android:usesCleartextTraffic="true"
 			tools:ignore="GoogleAppIndexingWarning">
+
 		<service
 				android:name=".services.DataSyncService"
 				android:enabled="true"
 				android:exported="true">
 		</service>
 
-		<activity android:name=".activities.ChatActivity">
+		<activity android:name=".activities.MessagesActivity">
 		</activity>
 		<activity android:name=".activities.ChatListActivity">
 		</activity>
