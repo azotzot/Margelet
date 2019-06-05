@@ -109,10 +109,10 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
     fun login(view: View) {
         val nickNameField = enterNickname
         val passwordField = enterPassword
-        //на время разработки//////////
-        nickNameField.setText("azotzot")
-        passwordField.setText("azotzot")
-        //////////////////
+//        //на время разработки//////////
+//        nickNameField.setText("azotzot")
+//        passwordField.setText("azotzot")
+//        //////////////////
         socket?.emit("login", nickNameField.text.toString(), passwordField.text.toString())
         Log.i("check", "emit success")
     }
