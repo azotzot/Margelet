@@ -16,7 +16,7 @@ class GlobalVariables: Application() {
         var user: User? = null
     }
 
-    private val connectUrl = "http://10.0.2.2:3000" //"https://margeletserver.herokuapp.com/"
+    private val connectUrl = "https://margeletserver.herokuapp.com/" //"http://10.0.2.2:3000" //
 
     override fun onCreate() {
         super.onCreate()
